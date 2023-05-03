@@ -5,30 +5,28 @@ body {
 
 .knife {
     position: absolute;
-    height: 540px;
-    left: 900px;
+    height: 530px;
+    
 }
 
 #tamanhodir {
-    width: 49%;
+    width: 48%;
     font-family: var(--font-family);
     padding-top: 2%;
-    padding-left: 50px;
+    padding-left: 4%;
     font-size: 18px;
 }
 
 #tamanhoesq {
-    width: 49%;
+    width: 48%;
     font-family: var(--font-family);
     padding-top: 2%;
     font-size: 18px;
-    padding-right: 50px;
-
+    padding-right: 4%;
 }
 
 #tamanho2 {
-    width: 2%;
-
+    width: 4%;
 }
 
 #fonte {

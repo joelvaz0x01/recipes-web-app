@@ -20,23 +20,7 @@ class Login extends React.Component {
     this.setState({LoginPassword: event.target.value})
   }
 
-  onSubmitLogin = () => {
-    fetch('http://localhost:3000/Login', {
-      method: 'post',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        email: this.state.LoginEmail,
-        password: this.state.LoginPassword
-      })
-    })
-      .then(response => response.json())
-      .then(user => {
-        if (user.id) {
-          this.props.loadUser(user)
-          this.props.onRouteChange('home');
-        }
-      })
-  }
+
 
   render() {
     const { onRouteChange } = this.props;
@@ -77,7 +61,7 @@ class Login extends React.Component {
                 />
               </div>
               <div className="lh-copy mt3 tc">
-                <p  onClick={() => onRouteChange('register')} className="fw1 link dim black db pointer">Register</p>
+                <a href='./register' className="fw1 link dim black db pointer">Register</a>
               </div>
             </div>
           </main>
@@ -89,7 +73,7 @@ class Login extends React.Component {
                sanduíches de legumes com formatos divertidos e pizzas com base de couve-flor e coberturas saudáveis..</p>
           </div>
           <div id='tamanho2' className='pa3'>
-            <img className='knife' src={knife} alt="faca" />
+            <img className='knife' src={knife} alt="faca" style={{ alignSelf: 'center' }}/>
           </div>
           <div id='tamanhodir' className='tl pa3'>
           <h2 id='fonte' className='pa3'>Receitas Saudaveis</h2>
@@ -98,16 +82,6 @@ class Login extends React.Component {
           </div>
 
         </div>
-        {/* <table>
-          <tr>
-            <td>
-            <p className=''>Receitas são instruções detalhadas para cozinhar uma variedade de alimentos deliciosos. Elas são passadas de geração em geração, modificadas e adaptadas de acordo com o gosto pessoal de cada um. 
-          Desde sobremesas até pratos principais, receitas são uma maneira maravilhosa de explorar diferentes culturas culinárias e sabores.</p>
-            </td>
-            <td><img className='knife' src={knife} alt="faca" /></td>
-            <td></td>
-          </tr>
-        </table> */}
 
       </div>
     );
