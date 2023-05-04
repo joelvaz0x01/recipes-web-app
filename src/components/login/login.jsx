@@ -30,9 +30,9 @@ class Login extends React.Component {
           <main className="pa4">
             <div className="measure">
               <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-                <legend className="f1 fw6 ph0 mh0">Login</legend>
+                <legend className="f1 fw6 ph0 mh0" style={{color: 'black'}}>Login</legend>
                 <div className="mt3">
-                  <label className="db fw6 lh-copy f9" htmlFor="email-address">Email:</label>
+                  <label className="db fw6 lh-copy f9" style={{color: 'black'}} htmlFor="email-address">Email:</label>
                   <input
                     className="pa2 input-reset ba bg-transparent w-100"
                     type="email"
@@ -42,7 +42,7 @@ class Login extends React.Component {
                   />
                 </div>
                 <div className="mv3">
-                  <label className="db fw6 lh-copy f9" htmlFor="password">Password:</label>
+                  <label className="db fw6 lh-copy f9" style={{color: 'black'}} htmlFor="password">Password:</label>
                   <input
                     className="b pa2 input-reset ba bg-transparent w-100"
                     type="password"

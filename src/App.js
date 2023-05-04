@@ -1,4 +1,4 @@
-import { Navbar, Login, Register } from './components';
+import { Navbar, Login, Register, WhatWeBelive, Ingredientes } from './components';
 import './App.css';
 import React, { Component } from 'react';
 import {
@@ -18,6 +18,8 @@ function App() {
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path='/register' element={<Register />} />
+        <Route path='/' element={<WhatWeBelive />} />
+        <Route path='/ingredientes' element={<Ingredientes />} />
       </Routes>
     </BrowserRouter>
   );

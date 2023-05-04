@@ -2,6 +2,9 @@ body {
     background-color: #373737;
     
 }
+p{
+    color: #c8c8c8;
+}
 
 .knife {
     position: absolute;
@@ -34,6 +37,4 @@ body {
     letter-spacing: 0.03em;
     color: #DCCA87;
     font-size: 35px;
-    
-    
 }
