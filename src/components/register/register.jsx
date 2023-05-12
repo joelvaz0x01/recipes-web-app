@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import peixe from '../../images/peixe.png'
 import './register.css'
 
-class Register extends React.Component {
+class Register extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -23,8 +23,6 @@ class Register extends React.Component {
     onPasswordChange = (event) => {
         this.setState({ password: event.target.value })
     }
-
-
 
     render() {
         return (
@@ -80,7 +78,7 @@ class Register extends React.Component {
                     <div id='tamanhoesquerda' className='tr pa3'>
                         <h2 id='fonte' className='pa3'>Salmão</h2>
                         <p>O salmão é um peixe altamente nutritivo, rico em proteínas, ácidos graxos ômega-3, vitaminas e minerais importantes. Ele ajuda a melhorar a saúde do coração, cérebro, olhos e pode até mesmo reduzir o risco de certos tipos de câncer.
-                             Além disso, o salmão é uma escolha saudável para quem busca uma dieta com baixo teor de gordura saturada e colesterol.</p>
+                            Além disso, o salmão é uma escolha saudável para quem busca uma dieta com baixo teor de gordura saturada e colesterol.</p>
                     </div>
                     <div id='tamanho-meio' className='pa3'>
                         <div className='retangulo-um'></div>
@@ -94,5 +92,4 @@ class Register extends React.Component {
         );
     }
 }
-
 export default Register;
