@@ -1,9 +1,10 @@
-export { default as Navbar } from './navbar/navbar';
-export { default as Login } from './login/login';
-export { default as Register } from './register/register';
-export { default as WhatWeBelive } from './Whatwebelive/whatwebelive';
-export { default as Ingredientes } from './ingredientes/ingredientes';
+export { default as Navbar } from './Navbar/Navbar';
+export { default as Login } from './Login/Login';
+export { default as Register } from './Register/Register';
+export { default as Home } from './Home/Home';
+export { default as Ingredientes } from './Ingredientes/Ingredientes';
 export { default as NotFound } from './NotFound/NotFound';
+export { default as Profile } from './Profile/Profile'
 
 
 

@@ -1,9 +1,10 @@
-import { Navbar, Login, Register, WhatWeBelive, Ingredientes, NotFound } from './components';
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import { Navbar, Login, Register, Home, Ingredientes, NotFound, Profile } from './components';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React, { Component } from 'react';
 import './App.css';
 
 class App extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -12,29 +13,43 @@ class App extends Component {
       username: ''
     }
   }
+
   render() {
     return (
       <BrowserRouter>
-        <Navbar />
+        <Navbar
+          username={this.state.username}
+        />
         <Routes>
           <Route path="/login" Component={
             () =>
               <><Login
-                LoginEmail={this.state.email}
-                LoginPassword={this.state.password}
+                email={this.state.email}
+                password={this.state.password}
               /></>
           } />
           <Route path='/register' Component={
             () =>
-              <><Register /></>
+              <><Register
+                email={this.state.email}
+                password={this.state.password}
+              /></>
           } />
           <Route path='/' Component={
             () =>
-              <><WhatWeBelive /></>
+              <><Home /></>
           } />
-          <Route path='/ingredientes' Component={
+          <Route path='/receitas' Component={
             () =>
-              <><Ingredientes /></>
+              <><Ingredientes
+                username={this.state.username}
+              /></>
+          } />
+          <Route path='/perfil' Component={
+            () =>
+              <><Profile
+                username={this.state.username}
+              /></>
           } />
           <Route path="*" Component={
             () =>
@@ -42,7 +57,7 @@ class App extends Component {
           }></Route>
         </Routes>
       </BrowserRouter>
-    );
+    )
   }
 
 }

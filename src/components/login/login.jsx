@@ -15,6 +15,9 @@ class Login extends Component {
   }
 
   render() {
+
+
+    const { email, password } = this.props;
     return (
       <div className='background'>
         <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center" style={{ backgroundColor: '#DCCA87' }}>
@@ -75,7 +78,7 @@ class Login extends Component {
         </div>
 
       </div>
-    );
+    )
   }
 }
 export default Login;
