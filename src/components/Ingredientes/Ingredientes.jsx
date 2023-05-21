@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Navigate } from "react-router-dom";
 import './ingredientes.css';
 
 class Ingredientes extends Component {
@@ -16,13 +15,7 @@ class Ingredientes extends Component {
     // }
 
     render() {
-
-
-        const { username } = this.props;
-        // if (!this.props.username) {
-        //     return <Navigate to="/login" replace={true} />
-        // }
-
+        const { username } = this.props
         return (
             <div className="inicio">
                 <div>
@@ -47,8 +40,6 @@ class Ingredientes extends Component {
                     <div class="bordinha w-10 pa3">
                         <button className="nav__item_button_receitas pa3" >Pesquisar</button>
                     </div>
-
-
                 </div>
                 <div className="receita_final pl5 pt5 ">
                     <h1>A sua receita está pronta ...</h1>
@@ -61,13 +52,21 @@ class Ingredientes extends Component {
                     </ul>
                 </div>
                 <div className="flex pt5">
-                    <div className="w-20 pa3">
-                        <h3 className="h3_d">Faça download da sua receita em pdf.</h3>
+                    {
+                        !username
+                            ? <div className="w-20 pa3">
+                                    <h3 className="h3_d">Faça login para descarregar o PDF a receita.</h3>
+                            </div>
+                            : <>
+                                <div className="w-20 pa3">
+                                    <h3 className="h3_d">Faça download da sua receita em PDF.</h3>
+                                </div>
+                                <div className="w-10 pa3">
+                                    <button className="nav__item_button_receitas_d pa3">Download</button>
+                                </div>
 
-                    </div>
-                    <div className="w-10 pa3">
-                        <button className="nav__item_button_receitas_d pa3" >Download</button>
-                    </div>
+                            </>
+                    }
                 </div>
             </div>
         )

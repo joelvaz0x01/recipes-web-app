@@ -13,17 +13,18 @@ class Navbar extends Component {
                     <Link to="/" className="nav__brand">Receitas</Link>
                     <ul className="nav__menu">
                         <Link to="/">Home</Link>
-                        <Link to="/receitas">Receitas</Link>
+                        <Link to="/recipes">Receitas</Link>
                         {
-                            this.props.username
-                                ? <Link className="nav__item_button_nav" to="/perfil">Olá {this.props.username}</Link>
+                            username
+                                ? <>
+                                    <Link className="nav__item_button_nav" to="/dashboard">Olá {username}</Link>
+                                    <button className="nav__item_button_nav" onClick={() => this.props.logoutUser()}>Sair</button>
+                                </>
                                 : <>
                                     <Link to="/login">Login</Link>
                                     <Link className="nav__item_button_sign" to="/register">Sign up</Link>
                                 </>
                         }
-
-
                     </ul>
                 </nav>
             </div>

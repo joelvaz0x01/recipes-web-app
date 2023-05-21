@@ -16,15 +16,17 @@ class Home extends Component {
                     </div>
                     <div id="tamanho_img-dois" class="mr2">
                         <img src={colher} className="" alt='colher' />
-                        <p className="fontep">Acreditamos que cozinhar e compartilhar receitas é uma forma de conexão humana. As receitas
-                            nos permitem unir culturas, pessoas e histórias, além de criar memórias duradouras com nossos entes queridos.</p>
+                        <p className="fontep">
+                            Acreditamos que cozinhar e compartilhar receitas é uma forma de conexão humana. As receitas permitem-nos unir culturas, pessoas e histórias, além de criar memórias duradouras com os nossos entes queridos.
+                        </p>
                         <img src={colher} className="pt5" alt='colher' />
-                        <p className="fontep">Além disso, valorizamos a diversidade culinária. Acreditamos que cada país, cada região e cada cultura tem sua própria tradição gastronômica única. Por isso, em nosso site, buscamos
-                            apresentar receitas de diferentes partes do mundo,
-                            para que nossos leitores possam experimentar novos sabores e conhecer outras culturas.</p>
+                        <p className="fontep">
+                            Além disso, valorizamos a diversidade culinária. Acreditamos que cada país, cada região e cada cultura tem a sua própria tradição gastronómica única. Por isso, no nosso site, procuramos apresentar receitas de diferentes partes do mundo, para que os nossos leitores possam experimentar novos sabores e conhecer outras culturas.
+                        </p>
                         <img src={colher} className="pt5" alt='colher' />
-                        <p className="fontep">Também acreditamos na importância de uma alimentação saudável e equilibrada. Por isso, nosso site de receitas tem um compromisso em oferecer opções nutritivas, saborosas e fáceis de preparar
-                            . Acreditamos que a alimentação pode ser uma ferramenta poderosa para promover a saúde e o bem-estar.</p>
+                        <p className="fontep">
+                            Também acreditamos na importância de uma alimentação saudável e equilibrada. Por isso, o nosso site de receitas tem um compromisso em oferecer opções nutritivas, saborosas e fáceis de preparar. Acreditamos que a alimentação pode ser uma ferramenta poderosa para promover a saúde e o bem-estar.
+                        </p>
                     </div>
                 </div>
             </div>

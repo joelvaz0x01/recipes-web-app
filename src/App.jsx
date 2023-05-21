@@ -9,9 +9,13 @@ class App extends Component {
     super(props);
     this.state = {
       email: '',
-      password: '',
       username: ''
     }
+  }
+
+  logoutUser = () => {
+    this.setState({ email: '' });
+    this.setState({ username: '' });
   }
 
   render() {
@@ -19,35 +23,37 @@ class App extends Component {
       <BrowserRouter>
         <Navbar
           username={this.state.username}
+          logoutUser={this.logoutUser}
         />
         <Routes>
           <Route path="/login" Component={
             () =>
               <><Login
                 email={this.state.email}
-                password={this.state.password}
+                username={this.state.username}
               /></>
           } />
           <Route path='/register' Component={
             () =>
               <><Register
                 email={this.state.email}
-                password={this.state.password}
+                username={this.state.username}
               /></>
           } />
-          <Route path='/' Component={
+          <Route exact path='/' Component={
             () =>
               <><Home /></>
           } />
-          <Route path='/receitas' Component={
+          <Route path='/recipes' Component={
             () =>
               <><Ingredientes
                 username={this.state.username}
               /></>
           } />
-          <Route path='/perfil' Component={
+          <Route path='/dashboard' Component={
             () =>
               <><Profile
+                email={this.state.email}
                 username={this.state.username}
               /></>
           } />
