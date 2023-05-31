@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import './ingredientes.css';
+// import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 
 class Ingredientes extends Component {
 
@@ -14,6 +15,8 @@ class Ingredientes extends Component {
     //     this.setState({ buttonColor: '#DCCA87' }); // Define a cor de fundo do botão quando clicado
     // }
 
+
+
     render() {
         const { username } = this.props
         return (
@@ -23,18 +26,6 @@ class Ingredientes extends Component {
                 </div>
                 <div class="flex">
                     <div class="bordinha  w-10 pa3 mr2">
-                        <button className="preto  w-100 pa3">Arroz</button>
-                    </div>
-                    <div class="bordinha w-10 pa3 mr2">
-                        <button className="preto  w-100 pa3">Arroz</button>
-                    </div>
-                    <div class="bordinha  w-10 pa3 mr2">
-                        <button className="preto w-100 pa3">Arroz</button>
-                    </div>
-                    <div class="bordinha w-10 pa3 mr2">
-                        <button className="preto  w-100 pa3">Arroz</button>
-                    </div>
-                    <div class="bordinha w-10 pa3">
                         <button className="preto  w-100 pa3">Arroz</button>
                     </div>
                     <div class="bordinha w-10 pa3">
