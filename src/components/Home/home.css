@@ -1,0 +1,22 @@
+body{
+    background-color: #373737;
+    color: #c8c8c8;
+}
+h1{
+    font-family: 'Cormorant', serif;
+    letter-spacing: 0.03em;
+    color: #DCCA87;
+    font-size: 35px;
+    padding: 25px;
+}
+#tamanho_img{
+    width: 30%;
+    
+}
+#tamanho_img-dois{
+    width: 70%;
+}
+.fontep{
+    text-align: left;
+    font-size: 20px;
+}

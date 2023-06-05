@@ -1,0 +1,40 @@
+body {
+    background-color: #373737;
+    
+}
+p{
+    color: #c8c8c8;
+}
+
+.knife {
+    position: absolute;
+    height: 530px;
+    
+}
+
+#tamanhodir {
+    width: 48%;
+    font-family: var(--font-family);
+    padding-top: 2%;
+    padding-left: 4%;
+    font-size: 18px;
+}
+
+#tamanhoesq {
+    width: 48%;
+    font-family: var(--font-family);
+    padding-top: 2%;
+    font-size: 18px;
+    padding-right: 4%;
+}
+
+#tamanho2 {
+    width: 4%;
+}
+
+#fonte {
+    font-family: 'Cormorant', serif;
+    letter-spacing: 0.03em;
+    color: #DCCA87;
+    font-size: 35px;
+}

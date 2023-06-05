@@ -1,0 +1,50 @@
+.peixe {
+    position: absolute;
+    left: 1200px;
+    height: 490px;
+    top: 440px ;
+    
+    
+    
+}
+
+.retangulo-um {
+    position: absolute;
+    width: 285px;
+    height: 285px;
+    left: 1380px;
+    top: 415px;
+    background: #DCCA87;
+}
+.retangulo-dois{
+    position: absolute;
+    width: 285px;
+    height: 285px;
+    left: 1175px;
+    top: 670px;
+    background: #DCCA87;
+    
+}
+#tamanhodireita {
+    width: 33%;
+    padding-top: 2%;
+
+}
+
+#tamanhoesquerda {
+    width: 60%;
+    padding-top: 2%;
+    font-family: var(--font-family);
+    font-size: 18px;
+
+}
+#fonte {
+    font-family: 'Cormorant', serif;
+    letter-spacing: 0.03em;
+    color: #DCCA87;
+    font-size: 35px;
+
+}
+
+
+
