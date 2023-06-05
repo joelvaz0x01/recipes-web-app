@@ -1,7 +1,7 @@
 import React, { Component, useEffect, useState } from "react";
 import './ingredientes.css';
-import SearchBox from './receitas'
-import { main } from '../../backend/server';
+import SearchBox from './Receitas'
+// import { main } from '../../../backend/server';
 // import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 
 class Ingredientes extends Component {
@@ -17,13 +17,13 @@ class Ingredientes extends Component {
         this.setState({ searchfield: event.target.value })
         console.log(event.target.value)
     }
-    async componentDidMount() {
-        const db = await main();
-        const collection = db.collection('Receita'); // Replace with your collection name
+    // async componentDidMount() {
+    //     const db = await main();
+    //     const collection = db.collection('Receita'); // Replace with your collection name
 
-        const result = await collection.find().toArray();
-        this.setState({ data: result });
-    }
+    //     const result = await collection.find().toArray();
+    //     this.setState({ data: result });
+    // }
 
 
     render() {

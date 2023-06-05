@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './login.css';
 import { Link, Navigate } from "react-router-dom";
 import knife from '../../images/knife.png';
-import { getUserByEmail } from '../../backend/db';
+// import { getUserByEmail } from '../../backend/db';
 
 
 class Login extends Component {
@@ -20,24 +20,24 @@ class Login extends Component {
     this.setState({ [name]: value });
   };
 
-  handleSubmit = async (event) => {
-    event.preventDefault();
+  // handleSubmit = async (event) => {
+  //   event.preventDefault();
 
-    const { email, password } = this.state;
+  //   const { email, password } = this.state;
 
-    try {
-      const user = await getUserByEmail(email);
-      if (user && user.password === password) {
-        // User is authenticated, perform login actions
-        console.log('Login successful');
-      } else {
-        this.setState({ error: 'Invalid email or password' });
-      }
-    } catch (error) {
-      console.error('Error logging in:', error);
-      this.setState({ error: 'An error occurred while logging in' });
-    }
-  };
+  //   try {
+  //     const user = await getUserByEmail(email);
+  //     if (user && user.password === password) {
+  //       // User is authenticated, perform login actions
+  //       console.log('Login successful');
+  //     } else {
+  //       this.setState({ error: 'Invalid email or password' });
+  //     }
+  //   } catch (error) {
+  //     console.error('Error logging in:', error);
+  //     this.setState({ error: 'An error occurred while logging in' });
+  //   }
+  // };
   
 
   render() {

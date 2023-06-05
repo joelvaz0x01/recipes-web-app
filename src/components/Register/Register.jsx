@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Navigate } from "react-router-dom";
 import peixe from '../../images/peixe.png'
 import './register.css'
-import { createUser } from '../../backend/db';
+import RecipesDataService from "../../services/recipes.service";
 
 class Register extends Component {
     constructor(props) {
@@ -10,33 +10,57 @@ class Register extends Component {
         this.state = {
             email: this.props.email,
             password: '',
-            name: this.props.name,
-            error: null,
+            name: this.props.name
         };
     }
+
     handleInputChange = (event) => {
         const { name, value } = event.target;
         this.setState({ [name]: value });
     };
 
-    handleSubmit = async (event) => {
-        event.preventDefault();
-
+    registerUser = () => {
         const { name, email, password } = this.state;
-
-        try {
-            const userId = await createUser(name, email, password);
-            console.log('User registered with ID:', userId);
-            // Perform any additional actions after successful registration
-        } catch (error) {
-            console.error('Error registering user:', error);
-            this.setState({ error: 'An error occurred while registering' });
-        }
+        const data = {
+            name: name,
+            email: email,
+            password: password
+        };
+        RecipesDataService.create(data)
+            .then(response => {
+                this.setState({
+                    id: response.data.id,
+                    name: response.data.name,
+                    email: response.data.email,
+                    password: response.data.password
+                });
+                console.log(response.data);
+            })
+            .catch(e => {
+                console.log(e);
+            });
     };
+
+
+
+    // handleSubmit = async (event) => {
+    //     event.preventDefault();
+
+    //     const { name, email, password } = this.state;
+
+    //     try {
+    //         const userId = await createUser(name, email, password);
+    //         console.log('User registered with ID:', userId);
+    //         // Perform any additional actions after successful registration
+    //     } catch (error) {
+    //         console.error('Error registering user:', error);
+    //         this.setState({ error: 'An error occurred while registering' });
+    //     }
+    // };
 
     render() {
         //falta declarar a variavel name
-        const { email, password, error } = this.state;
+        const { email, password } = this.state;
         const { name } = this.props
         if (name) {
             return <Navigate to="/dashboard" replace={true} />

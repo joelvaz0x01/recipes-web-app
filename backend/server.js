@@ -34,43 +34,34 @@ async function main() {
     await mongoose.connect(uri);
 }
 
+// async function createUser(name, email, password) {
+//     const db = await main();
+//     const collection = db.collection('User'); // Replace with your collection name
 
+//     const newUser = {
+//         name,
+//         email,
+//         password,
+//     };
 
-async function createUser(name, email, password) {
-    const db = await main();
-    const collection = db.collection('User'); // Replace with your collection name
-  
-    const newUser = {
-      name,
-      email,
-      password,
-    };
-  
-    const result = await collection.insertOne(newUser);
-    return result.insertedId;
-}
-  
-  async function getUserByEmail(email) {
-    const db = await main();
-    const collection = db.collection('User'); // Replace with your collection name
-  
-    const user = await collection.findOne({ email });
-    return user;
-}
-  
-  
+//     const result = await collection.insertOne(newUser);
+//     return result.insertedId;
+// }
 
-const usersRouter = require('./routes/user');
-const recipesRouter = require('./routes/recipes');
-const ingredientsRouter = require('./routes/ingredients');
+// async function getUserByEmail(email) {
+//     const db = await main();
+//     const collection = db.collection('User'); // Replace with your collection name
+
+//     const user = await collection.findOne({ email });
+//     return user;
+// }
+
+const usersRouter = require('./routes/user-routes');
+const recipesRouter = require('./routes/recipes-routes');
 
 app.use('/users', usersRouter);
 app.use('/recipes', recipesRouter);
-app.use('/ingredients', ingredientsRouter);
-
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
 });
-
-module.exports = { main, createUser, getUserByEmail };
