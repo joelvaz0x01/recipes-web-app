@@ -1,27 +1,19 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+module.exports = (sequelize, Sequelize) => {
+    const Recipe = sequelize.define("recipe", {
+        name_recipe: {
+            type: Sequelize.STRING
+        },
+        description: {
+            type: Sequelize.STRING
+        },
+        userId: {
+            type: Sequelize.INTEGER,
+            references: {
+                model: 'users',
+                key: 'id'
+            }
+        }
+    });
 
-const recipeSchema = new Schema({
-    email: {
-        // nao querias meter email?
-        type: String,
-        required: true,
-        ref: 'User'
-    },
-    name_recipe: {
-        type: String,
-        required: true,
-        minlength: 3
-    },
-    description: {
-        type: String,
-        required: true,
-        minlength: 3
-    },
-}, {
-    timestamps: true,
-});
-
-const Recipe = mongoose.model('Receita', recipeSchema);
-
-module.exports = Recipe;
+    return Recipe;
+}

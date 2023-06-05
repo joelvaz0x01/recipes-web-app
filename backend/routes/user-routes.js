@@ -1,20 +1,28 @@
-const router = require('express').Router();
-let User = require('../models/user.model');
+module.exports = app => {
+    const recipes = require("../controllers/recipes.controller.js");
 
-router.route('/').get((req, res) => {
-    User.find()
-        .then(users => res.json(users))
-        .catch(err => res.status(400).json('Error: ' + err));
-});
+    var router = require("express").Router();
 
-router.route('/add').post((req, res) => {
-    const { name, email, password } = req.body;
+    // Create a new User
+    router.post("/", recipes.create);
 
-    const newUser = new User({ name, email, password });
+    // Retrieve all Users
+    router.get("/", recipes.findAll);
 
-    newUser.save()
-        .then(() => res.json('Record added!'))
-        .catch(err => res.status(400).json('Error: ' + err));
-});
+    // Retrieve all published Users
+    router.get("/published", recipes.findAllPublished);
 
-module.exports = router;
+    // Retrieve a single User with id
+    router.get("/:id", recipes.findOne);
+
+    // Update a User with id
+    router.put("/:id", recipes.update);
+
+    // Delete a User with id
+    router.delete("/:id", recipes.delete);
+
+    // Delete all Users
+    router.delete("/", recipes.deleteAll);
+
+    app.use('/api/recipes', router);
+};
