@@ -1,67 +1,44 @@
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
-
-require('dotenv').config();
+const express = require("express");
+const cors = require("cors");
 
 const app = express();
-const port = process.env.PORT || 5000;
 
-app.use(cors());
+var corsOptions = {
+    origin: "http://localhost:8081"
+};
+
+app.use(cors(corsOptions));
+
+// parse requests of content-type - application/json
 app.use(express.json());
 
-const uri = process.env.ATLAS_URI;
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }));
 
-// const client = new MongoClient(uri);
+const db = require("./app/models");
+db.mongoose
+    .connect(db.url, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
+    .then(() => {
+        console.log("Connected to the database!");
+    })
+    .catch(err => {
+        console.log("Cannot connect to the database!", err);
+        process.exit();
+    });
 
-// async function connectToDatabase() {
-//   try {
-//     await client.connect();
-//     console.log('Connected to MongoDB Atlas');
+// simple route
+app.get("/", (req, res) => {
+    res.json({ message: "Welcome to bezkoder application." });
+});
 
-//     const db = client.db(); // Replace with your database name
-//     return db;
-//   } catch (error) {
-//     console.error('Error connecting to MongoDB Atlas:', error);
-//   }
-// }
+require("./app/routes/recipes-routes")(app);
+require("./app/routes/user-routes")(app);
 
-main()
-    .then(() => console.log('MongoDB Connected...'))
-    .catch((err) => console.log(err));
-
-async function main() {
-    await mongoose.connect(uri);
-}
-
-// async function createUser(name, email, password) {
-//     const db = await main();
-//     const collection = db.collection('User'); // Replace with your collection name
-
-//     const newUser = {
-//         name,
-//         email,
-//         password,
-//     };
-
-//     const result = await collection.insertOne(newUser);
-//     return result.insertedId;
-// }
-
-// async function getUserByEmail(email) {
-//     const db = await main();
-//     const collection = db.collection('User'); // Replace with your collection name
-
-//     const user = await collection.findOne({ email });
-//     return user;
-// }
-
-const usersRouter = require('./routes/user-routes');
-const recipesRouter = require('./routes/recipes-routes');
-
-app.use('/users', usersRouter);
-app.use('/recipes', recipesRouter);
-
-app.listen(port, () => {
-    console.log(`Server is running on port: ${port}`);
+// set port, listen for requests
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}.`);
 });
