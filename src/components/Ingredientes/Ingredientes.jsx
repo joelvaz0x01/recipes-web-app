@@ -1,6 +1,7 @@
 import React, { Component, useEffect, useState } from "react";
 import './ingredientes.css';
 import SearchBox from './Receitas'
+import { withRouter } from '../../common/with-route';
 // import { main } from '../../../backend/server';
 // import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 
@@ -84,4 +85,4 @@ class Ingredientes extends Component {
         )
     }
 }
-export default Ingredientes;
+export default withRouter(Ingredientes);

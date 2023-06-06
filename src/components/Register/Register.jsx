@@ -3,16 +3,23 @@ import { Navigate } from "react-router-dom";
 import peixe from '../../images/peixe.png'
 import './register.css'
 import RecipesDataService from "../../services/recipes.service";
+import { withRouter } from '../../common/with-route';
 
 class Register extends Component {
     constructor(props) {
         super(props);
+        this.registerUser = this.registerUser.bind(this);
+
         this.state = {
             email: this.props.email,
             password: '',
             name: this.props.name
         };
     }
+
+    // componentDidMount() {
+    //     this.registerUser(this.state.email, this.state.password, this.state.name)
+    // }
 
     handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -59,9 +66,7 @@ class Register extends Component {
     // };
 
     render() {
-        //falta declarar a variavel name
-        const { email, password } = this.state;
-        const { name } = this.props
+        const { email, password, name } = this.state;
         if (name) {
             return <Navigate to="/dashboard" replace={true} />
         } else {
@@ -110,7 +115,7 @@ class Register extends Component {
                                 </fieldset>
                                 <div className="">
                                     <input
-                                        onClick={this.handleSubmit}
+                                        onClick={() => this.registerUser()}
                                         className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer fw1 dib"
                                         type="submit"
                                         value="Registar"
@@ -140,4 +145,5 @@ class Register extends Component {
 
     }
 }
-export default Register;
+
+export default withRouter(Register);

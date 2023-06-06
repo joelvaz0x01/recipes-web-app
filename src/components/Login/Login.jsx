@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './login.css';
 import { Link, Navigate } from "react-router-dom";
 import knife from '../../images/knife.png';
-// import { getUserByEmail } from '../../backend/db';
+import { withRouter } from '../../common/with-route';
 
 
 class Login extends Component {
@@ -116,4 +116,4 @@ class Login extends Component {
     }
   }
 }
-export default Login;
+export default withRouter(Login);

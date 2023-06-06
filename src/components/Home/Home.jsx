@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import './home.css';
 import chef from '../../images/chef.jpg'
 import colher from '../../images/Vector.png'
+import { withRouter } from '../../common/with-route';
 
 class Home extends Component {
     render() {
@@ -34,4 +35,4 @@ class Home extends Component {
         )
     }
 }
-export default Home;
+export default withRouter(Home);

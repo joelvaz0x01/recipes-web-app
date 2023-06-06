@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from '../../common/with-route';
 
 const SearchBox = ({ searchfield, searchChange }) => {
     return (
@@ -14,4 +15,4 @@ const SearchBox = ({ searchfield, searchChange }) => {
     );
 }
 
-export default SearchBox;
+export default withRouter(SearchBox);
