@@ -37,7 +37,8 @@ class Login extends Component {
       .then(response => {
         this.setState({
           email: response.data.email,
-          username: response.data.username
+          username: response.data.username,
+          isLoggedIn: true
         });
         console.log(response.data);
       })
@@ -84,7 +85,7 @@ class Login extends Component {
                 </fieldset>
                 <div className="">
                   <input
-                    onSubmit={() => this.loginUsers()}
+                    onClick={() => this.loginUsers()}
                     className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer fw1 db"
                     type="submit"
                     value="Login"

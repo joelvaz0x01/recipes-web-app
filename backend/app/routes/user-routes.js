@@ -24,5 +24,8 @@ module.exports = app => {
     // Delete all Users
     router.delete("/", users.deleteAll);
 
+    // Check if user is admin
+    router.post("/isAdmin", users.isAdmin);
+
     app.use('/api/users', router);
 };

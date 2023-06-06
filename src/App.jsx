@@ -10,8 +10,9 @@ class App extends Component {
     super(props);
     this.state = {
       email: '',
-      username: '1',
-      isLoggedIn: false
+      username: 'admin',
+      isLoggedIn: true,
+      isAdmin: false
     }
   }
 
@@ -19,6 +20,7 @@ class App extends Component {
     this.setState({ email: '' });
     this.setState({ username: '' });
     this.setState({ isLoggedIn: false });
+    this.setState({ isAdmin: false });
   }
 
   render() {
@@ -27,6 +29,7 @@ class App extends Component {
         <Navbar
           username={this.state.username}
           logoutUser={this.logoutUser}
+          isAdmin={this.state.isAdmin}
         />
         <Routes>
           <Route path="/login" Component={
@@ -60,6 +63,8 @@ class App extends Component {
               <><Admin
                 email={this.state.email}
                 username={this.state.username}
+                isLoggedIn={this.state.isLoggedIn}
+                isAdmin={this.state.isAdmin}
               /></>
           } />
           <Route path="*" Component={

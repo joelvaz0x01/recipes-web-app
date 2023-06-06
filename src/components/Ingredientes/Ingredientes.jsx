@@ -19,14 +19,6 @@ class Ingredientes extends Component {
         this.setState({ searchfield: event.target.value })
         console.log(event.target.value)
     }
-    // async componentDidMount() {
-    //     const db = await main();
-    //     const collection = db.collection('Receita'); // Replace with your collection name
-
-    //     const result = await collection.find().toArray();
-    //     this.setState({ data: result });
-    // }
-
 
     render() {
         const { data, searchField } = this.state;
@@ -55,9 +47,7 @@ class Ingredientes extends Component {
                     {/* <button className="nav__item_button_receitas pa3" >Pesquisar</button> */}
 
                 </div>
-                <div className="receita_final pl5 pt5 ">
-                    <h1>A sua receita está pronta ...</h1>
-                </div>
+
                 <div className="">
                     {
                         !username
@@ -65,6 +55,9 @@ class Ingredientes extends Component {
                                 <h3 className="h3_d">Faça login para descarregar o PDF a receita.</h3>
                             </div>
                             : <>
+                                <div className="receita_final pl5 pt5 ">
+                                    <h1>A sua receita está pronta ...</h1>
+                                </div>
                                 <div className="w-100">
                                     <div className='pdf-div'>
                                         <PDFViewer className='pdf-view'>
@@ -72,7 +65,7 @@ class Ingredientes extends Component {
                                         </PDFViewer>
                                     </div>
                                 </div>
-                            </>
+                         </>
                     }
                 </div>
             </div>

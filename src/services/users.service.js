@@ -29,6 +29,10 @@ class UsersDataService {
     deleteAll() {
         return http.delete(`/users`);
     }
+
+    isAdmin() {
+        return http.post(`/users/isAdmin`);
+    }
 }
 
 export default new UsersDataService();

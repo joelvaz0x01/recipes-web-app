@@ -186,3 +186,25 @@ exports.deleteAll = (req, res) => {
         }
         );
 }
+
+// Verifi if the user is admin
+exports.isAdmin = (req, res) => {
+    const username = req.body.username;
+
+    User.findOne({ username: username })
+        .then(data => {
+            console.log(data);
+            if (!data) {
+                return res.status(404).send({ message: "User Not found." });
+            }
+
+            res.status(200).send({
+                isAdmin: data.isAdmin
+            });
+        }
+        )
+        .catch(err => {
+            res.status(500).send({ message: err.message });
+        }
+        );
+}
