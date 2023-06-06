@@ -30,8 +30,8 @@ class UsersDataService {
         return http.delete(`/users`);
     }
 
-    isAdmin() {
-        return http.post(`/users/isAdmin`);
+    isAdmin(id) {
+        return http.get(`/users/admin/${id}`);
     }
 }
 

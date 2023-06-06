@@ -1,28 +1,17 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import './navbar.css';
-import UsersDataService from "../../services/users.service";
 import { withRouter } from '../../common/with-route';
 
 class Navbar extends Component {
 
-    // Verificar se necessário
-    isAdmin = () => {
-        var data = {
-            username: this.state.username
+    constructor(props) {
+        super(props);
+        this.state = {
+            username: this.props.username,
+            isAdmin: this.props.isAdmin
         };
-
-        UsersDataService.isAdmin(data)
-            .then(response => {
-                this.setState({
-                    isAdmin: response.data.isAdmin
-                });
-                console.log(response.data);
-            })
-            .catch(e => {
-                console.log(e);
-            });
-    };
+    }
 
     render() {
         const { username, isAdmin } = this.props;
@@ -37,18 +26,18 @@ class Navbar extends Component {
                         {
                             isAdmin
                                 ? <>
-                                    <Link className="nav__item_button_nav" to="/admin">Olá {username}</Link>
+                                    <Link id="nav__item_button_nav" to="/admin">Olá {username}</Link>
                                 </>
                                 : <></>
                         }
                         {
                             username
                                 ? <>
-                                    <button className="nav__item_button_nav" onClick={() => this.props.logoutUser()}>Sair</button>
+                                    <button id="nav__item_button_nav" onClick={() => this.props.logoutUser()}>Sair</button>
                                 </>
                                 : <>
                                     <Link to="/login">Login</Link>
-                                    <Link className="nav__item_button_sign" to="/register">Sign up</Link>
+                                    <Link id="nav__item_button_nav" to="/register">Sign up</Link>
                                 </>
                         }
                     </ul>

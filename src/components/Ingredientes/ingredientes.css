@@ -56,3 +56,8 @@ li{
     height: 80vh;
     border: 1px solid #ccc;
 }
+
+#cor{
+    color: #c8c8c8;
+    text-decoration: underline;
+}

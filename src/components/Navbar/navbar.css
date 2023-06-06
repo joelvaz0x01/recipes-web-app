@@ -57,6 +57,19 @@ a {
     cursor: pointer;
     border-radius: 5px;
 }
+
+#nav__item_button_nav {
+    color: black;
+    padding: 0.5rem 1rem;
+    background: #c8c8c8;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
 .nav__item_button_sign{
     padding: 0.5rem 1rem;
     background: #c8c8c8;

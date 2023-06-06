@@ -4,7 +4,7 @@ const Recipe = db.recipes;
 // Create and Save a new Recipe
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.name) {
+    if (!req.body.name || !req.body.description || !req.body.instructions || !req.body.published) {
         res.status(400).send({ message: "Content can not be empty!" });
         return;
     }
@@ -14,7 +14,7 @@ exports.create = (req, res) => {
         name: req.body.name,
         description: req.body.description,
         instructions: req.body.instructions,
-        published: req.body.published ? req.body.published : false
+        published: req.body.published
     });
 
     // Save Recipe in the database

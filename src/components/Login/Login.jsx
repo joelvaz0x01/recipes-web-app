@@ -14,8 +14,9 @@ class Login extends Component {
     this.state = {
       username: this.props.username,
       email: this.props.email,
-      password: '',
-      isLoggedIn: this.props.isLoggedIn
+      isLoggedIn: this.props.isLoggedIn,
+      isAdmin: this.props.isAdmin,
+      password: ''
     };
   }
 
@@ -26,6 +27,20 @@ class Login extends Component {
   onChangePassword = (event) => {
     this.setState({ password: event.target.value });
   };
+
+  // isAdmin = (username) => {
+  //   UsersDataService.isAdmin(username)
+  //     .then(response => {
+  //       this.setState({
+  //         isAdmin: response.data.isAdmin
+  //       });
+  //       this.props.updateIsAdmin(response.data.isAdmin);
+  //       console.log(response.data);
+  //     })
+  //     .catch(e => {
+  //       console.log(e);
+  //     });
+  // };
 
   loginUsers = () => {
     var data = {
@@ -38,8 +53,13 @@ class Login extends Component {
         this.setState({
           email: response.data.email,
           username: response.data.username,
+          isAdmin: response.data.isAdmin,
           isLoggedIn: true
         });
+        this.props.updateEmail(response.data.email);
+        this.props.updateUsername(response.data.username);
+        this.props.updateIsAdmin(response.data.isAdmin);
+        this.props.updateIsLoggedIn(true);
         console.log(response.data);
       })
       .catch(e => {
@@ -50,7 +70,7 @@ class Login extends Component {
   render() {
     const { email, password, isLoggedIn } = this.state;
     if (isLoggedIn) {
-      return <Navigate to="/" replace={true} />
+      return <Navigate to="/recipes" replace={true} />
     } else {
       return (
         <div className='background'>

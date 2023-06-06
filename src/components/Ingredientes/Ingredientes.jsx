@@ -1,9 +1,11 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import './ingredientes.css';
 import SearchBox from './Receitas'
 import { withRouter } from '../../common/with-route';
 import MyDocument from "./pdf";
-import { Page, PDFViewer } from '@react-pdf/renderer';
+import { PDFViewer } from '@react-pdf/renderer';
+import RecipesDataService from "../../services/recipes.service";
 // import { main } from '../../../backend/server';
 
 class Ingredientes extends Component {
@@ -12,20 +14,57 @@ class Ingredientes extends Component {
         this.state = {
             data: [],
             searchField: '',
+            name: this.props.name
         };
     }
+
 
     onSearchChange = (event) => {
         this.setState({ searchfield: event.target.value })
         console.log(event.target.value)
     }
 
+    searchRecipes = () => {
+        var data = {
+            name: this.state.name
+        };
+        RecipesDataService.searchRecipes(data)
+            .then(response => {
+                this.setState({
+                    name: response.data.name
+                });
+                console.log(response.data);
+            })
+            .catch(e => {
+                console.log(e);
+            });
+    };
+    
+    
+    findName = () => {
+        var data = {
+            name: this.state.name
+        };
+        RecipesDataService.findByTitle(data)
+            .then(response => {
+                this.setState({
+                    name: response.data.name
+                });
+                console.log(response.data);
+            })
+            .catch(e => {
+                console.log(e);
+            });
+    };
+
+    //RecipesDataService.findByTitle(title)
+
     render() {
         const { data, searchField } = this.state;
         const { username } = this.props;
 
         const filteredData = data.filter((item) =>
-            item.name_recipe.toLowerCase().includes(searchField.toLowerCase())
+            item.name.toLowerCase().includes(searchField.toLowerCase())
         );
 
         return (
@@ -38,8 +77,7 @@ class Ingredientes extends Component {
                     <SearchBox searchChange={this.onSearchChange} />
                     {filteredData.map((item) => (
                         <div key={item._id}>
-                            <h2>{item.name_recipe}</h2>
-                            <p>{item.description}</p>
+                            <h2>{item.name}</h2>
                         </div>
                     ))}
 
@@ -52,7 +90,7 @@ class Ingredientes extends Component {
                     {
                         !username
                             ? <div className="w-20 pa3">
-                                <h3 className="h3_d">Faça login para descarregar o PDF a receita.</h3>
+                                <h3 className="h3_d">Faça <Link id="cor" to="/login">login</Link> para descarregar o PDF a receita.</h3>
                             </div>
                             : <>
                                 <div className="receita_final pl5 pt5 ">
@@ -65,7 +103,7 @@ class Ingredientes extends Component {
                                         </PDFViewer>
                                     </div>
                                 </div>
-                         </>
+                            </>
                     }
                 </div>
             </div>

@@ -45,6 +45,7 @@ class Register extends Component {
                     isLoggedIn: true
                 });
                 console.log(response.data);
+                <Navigate to="/login" replace={true} />
             })
             .catch(e => {
                 console.log(e);

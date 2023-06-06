@@ -10,10 +10,26 @@ class App extends Component {
     super(props);
     this.state = {
       email: '',
-      username: 'admin',
-      isLoggedIn: true,
+      username: '',
+      isLoggedIn: false,
       isAdmin: false
     }
+  }
+
+  updateEmail = (email) => {
+    this.setState({ email: email });
+  }
+
+  updateUsername = (username) => {
+    this.setState({ username: username });
+  }
+
+  updateIsLoggedIn = (isLoggedIn) => {
+    this.setState({ isLoggedIn: isLoggedIn });
+  }
+
+  updateIsAdmin = (isAdmin) => {
+    this.setState({ isAdmin: isAdmin });
   }
 
   logoutUser = () => {
@@ -24,28 +40,34 @@ class App extends Component {
   }
 
   render() {
+    const { email, username, isLoggedIn, isAdmin } = this.state;
     return (
       <BrowserRouter>
         <Navbar
           username={this.state.username}
-          logoutUser={this.logoutUser}
           isAdmin={this.state.isAdmin}
+          logoutUser={this.logoutUser}
         />
         <Routes>
           <Route path="/login" Component={
             () =>
               <><Login
-                email={this.state.email}
-                username={this.state.username}
-                isLoggedIn={this.state.isLoggedIn}
+                username={username}
+                email={email}
+                isLoggedIn={isLoggedIn}
+                isAdmin={isAdmin}
+                updateEmail={this.updateEmail}
+                updateUsername={this.updateUsername}
+                updateIsAdmin={this.updateIsAdmin}
+                updateIsLoggedIn={this.updateIsLoggedIn}
               /></>
           } />
           <Route path='/register' Component={
             () =>
               <><Register
-                email={this.state.email}
-                username={this.state.username}
-                isLoggedIn={this.state.isLoggedIn}
+                email={email}
+                username={username}
+                isLoggedIn={isLoggedIn}
               /></>
           } />
           <Route exact path='/' Component={
@@ -55,16 +77,16 @@ class App extends Component {
           <Route path='/recipes' Component={
             () =>
               <><Ingredientes
-                username={this.state.username}
+                username={username}
               /></>
           } />
           <Route path='/admin' Component={
             () =>
               <><Admin
-                email={this.state.email}
-                username={this.state.username}
-                isLoggedIn={this.state.isLoggedIn}
-                isAdmin={this.state.isAdmin}
+                email={email}
+                username={username}
+                isLoggedIn={isLoggedIn}
+                isAdmin={isAdmin}
               /></>
           } />
           <Route path="*" Component={

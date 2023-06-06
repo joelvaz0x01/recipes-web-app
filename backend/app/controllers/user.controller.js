@@ -27,7 +27,8 @@ exports.login = (req, res) => {
             res.status(200).send({
                 id: data._id,
                 username: data.username,
-                email: data.email
+                email: data.email,
+                isAdmin: data.isAdmin,
             });
         }
         )
@@ -40,7 +41,6 @@ exports.login = (req, res) => {
 // Register a User
 exports.register = (req, res) => {
     // Validate request
-    console.log(req.body);
     if (!req.body.username || !req.body.email || !req.body.password) {
         res.status(400).send({ message: "Content can not be empty!" });
         return;
@@ -62,8 +62,7 @@ exports.register = (req, res) => {
                 id: data._id,
                 username: data.username,
                 email: data.email,
-                isAdmin: data.isAdmin,
-                accessToken: null
+                isAdmin: data.isAdmin
             });
         }
         )
@@ -189,16 +188,16 @@ exports.deleteAll = (req, res) => {
 
 // Verifi if the user is admin
 exports.isAdmin = (req, res) => {
-    const username = req.body.username;
+    const username = req.params.id;
 
     User.findOne({ username: username })
         .then(data => {
-            console.log(data);
             if (!data) {
                 return res.status(404).send({ message: "User Not found." });
             }
 
             res.status(200).send({
+                id: data._id,
                 isAdmin: data.isAdmin
             });
         }
