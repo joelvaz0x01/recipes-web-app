@@ -2,49 +2,54 @@ import React, { Component } from 'react';
 import './login.css';
 import { Link, Navigate } from "react-router-dom";
 import knife from '../../images/knife.png';
+import UsersDataService from "../../services/users.service";
 import { withRouter } from '../../common/with-route';
 
 
 class Login extends Component {
   constructor(props) {
     super(props);
+    this.loginUsers = this.loginUsers.bind(this);
+
     this.state = {
+      username: this.props.username,
       email: this.props.email,
       password: '',
-      error: null
+      isLoggedIn: this.props.isLoggedIn
     };
   }
 
-  handleInputChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
+  onChangeEmail = (event) => {
+    this.setState({ email: event.target.value });
   };
 
-  // handleSubmit = async (event) => {
-  //   event.preventDefault();
+  onChangePassword = (event) => {
+    this.setState({ password: event.target.value });
+  };
 
-  //   const { email, password } = this.state;
+  loginUsers = () => {
+    var data = {
+      email: this.state.email,
+      password: this.state.password
+    };
 
-  //   try {
-  //     const user = await getUserByEmail(email);
-  //     if (user && user.password === password) {
-  //       // User is authenticated, perform login actions
-  //       console.log('Login successful');
-  //     } else {
-  //       this.setState({ error: 'Invalid email or password' });
-  //     }
-  //   } catch (error) {
-  //     console.error('Error logging in:', error);
-  //     this.setState({ error: 'An error occurred while logging in' });
-  //   }
-  // };
-  
+    UsersDataService.login(data)
+      .then(response => {
+        this.setState({
+          email: response.data.email,
+          username: response.data.username
+        });
+        console.log(response.data);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  };
 
   render() {
-    const { email, password, error } = this.state;
-    const { username } = this.props
-    if (username) {
-      return <Navigate to="/dashboard" replace={true} />
+    const { email, password, isLoggedIn } = this.state;
+    if (isLoggedIn) {
+      return <Navigate to="/" replace={true} />
     } else {
       return (
         <div className='background'>
@@ -61,7 +66,7 @@ class Login extends Component {
                       name="email-address"
                       value={email}
                       id="email-address"
-                      onChange={this.handleInputChange}
+                      onChange={this.onChangeEmail}
                     />
                   </div>
                   <div className="mv3">
@@ -72,14 +77,14 @@ class Login extends Component {
                       value={password}
                       name="password"
                       id="password"
-                      onChange={this.handleInputChange}
+                      onChange={this.onChangePassword}
                       required
                     />
                   </div>
                 </fieldset>
                 <div className="">
                   <input
-                    onSubmit={this.handleSubmit}
+                    onSubmit={() => this.loginUsers()}
                     className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer fw1 db"
                     type="submit"
                     value="Login"
@@ -88,7 +93,6 @@ class Login extends Component {
                 <div className="lh-copy mt3 tc">
                   <Link className="fw1 link dim black db pointer" to="../register">Register</Link>
                 </div>
-                {error && <p>{error}</p>}
               </div>
             </main>
           </article>
@@ -110,7 +114,6 @@ class Login extends Component {
               </p>
             </div>
           </div>
-
         </div>
       )
     }

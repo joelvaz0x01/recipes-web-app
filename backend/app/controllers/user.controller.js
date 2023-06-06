@@ -1,12 +1,13 @@
 const db = require("../models");
+const bcrypt = require("bcryptjs");
 const User = db.users;
 
 // Login a User
 exports.login = (req, res) => {
-    const username = req.body.username;
+    const email = req.body.email;
     const password = req.body.password;
 
-    User.findOne({ username: username })
+    User.findOne({ email: email })
         .then(data => {
             if (!data) {
                 return res.status(404).send({ message: "User Not found." });
@@ -19,7 +20,6 @@ exports.login = (req, res) => {
 
             if (!passwordIsValid) {
                 return res.status(401).send({
-                    accessToken: null,
                     message: "Invalid Password!"
                 });
             }
@@ -27,8 +27,7 @@ exports.login = (req, res) => {
             res.status(200).send({
                 id: data._id,
                 username: data.username,
-                email: data.email,
-                accessToken: null
+                email: data.email
             });
         }
         )
@@ -41,6 +40,7 @@ exports.login = (req, res) => {
 // Register a User
 exports.register = (req, res) => {
     // Validate request
+    console.log(req.body);
     if (!req.body.username || !req.body.email || !req.body.password) {
         res.status(400).send({ message: "Content can not be empty!" });
         return;
@@ -50,7 +50,7 @@ exports.register = (req, res) => {
     const user = new User({
         username: req.body.username,
         email: req.body.email,
-        password: bcrypt.hashSync(req.body.password, 8),
+        password: bcrypt.hashSync(req.body.password, 10),
         isAdmin: false
     });
 

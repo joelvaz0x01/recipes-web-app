@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Navigate } from "react-router-dom";
-import './profile.css';
+import './admin.css';
 import { withRouter } from '../../common/with-route';
 
 class Profile extends Component {
@@ -14,6 +14,8 @@ class Profile extends Component {
                 <div>
                     <h1>Perfil de {username}</h1>
                     <p>Email {email}</p>
+                    
+                
                 </div>
             )
         }

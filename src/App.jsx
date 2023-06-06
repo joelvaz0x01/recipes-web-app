@@ -1,4 +1,4 @@
-import { Navbar, Login, Register, Home, Ingredientes, NotFound, Profile } from './components';
+import { Navbar, Login, Register, Home, Ingredientes, NotFound, Admin } from './components';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React, { Component } from 'react';
 import './App.css';
@@ -10,13 +10,15 @@ class App extends Component {
     super(props);
     this.state = {
       email: '',
-      username: ''
+      username: '1',
+      isLoggedIn: false
     }
   }
 
   logoutUser = () => {
     this.setState({ email: '' });
     this.setState({ username: '' });
+    this.setState({ isLoggedIn: false });
   }
 
   render() {
@@ -32,6 +34,7 @@ class App extends Component {
               <><Login
                 email={this.state.email}
                 username={this.state.username}
+                isLoggedIn={this.state.isLoggedIn}
               /></>
           } />
           <Route path='/register' Component={
@@ -39,6 +42,7 @@ class App extends Component {
               <><Register
                 email={this.state.email}
                 username={this.state.username}
+                isLoggedIn={this.state.isLoggedIn}
               /></>
           } />
           <Route exact path='/' Component={
@@ -51,9 +55,9 @@ class App extends Component {
                 username={this.state.username}
               /></>
           } />
-          <Route path='/dashboard' Component={
+          <Route path='/admin' Component={
             () =>
-              <><Profile
+              <><Admin
                 email={this.state.email}
                 username={this.state.username}
               /></>
