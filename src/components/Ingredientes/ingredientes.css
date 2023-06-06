@@ -45,3 +45,14 @@ li{
 .h3_d{
     margin-left: 5%;
 }
+.pdf-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.pdf-view{
+    width: 80%;
+    height: 80vh;
+    border: 1px solid #ccc;
+}

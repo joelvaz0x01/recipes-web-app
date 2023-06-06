@@ -1,28 +1,28 @@
 module.exports = app => {
-    const recipes = require("../controllers/recipes.controller.js");
+    const users = require("../controllers/user.controller.js");
 
     var router = require("express").Router();
 
-    // Create a new User
-    router.post("/", recipes.create);
+    // Login a User
+    router.post("/", users.login);
+
+    // Register a new User
+    router.post("/register", users.register);
 
     // Retrieve all Users
-    router.get("/", recipes.findAll);
-
-    // Retrieve all published Users
-    router.get("/published", recipes.findAllPublished);
+    router.get("/", users.findAll);
 
     // Retrieve a single User with id
-    router.get("/:id", recipes.findOne);
+    router.get("/:id", users.findOne);
 
     // Update a User with id
-    router.put("/:id", recipes.update);
+    router.put("/:id", users.update);
 
     // Delete a User with id
-    router.delete("/:id", recipes.delete);
+    router.delete("/:id", users.delete);
 
     // Delete all Users
-    router.delete("/", recipes.deleteAll);
+    router.delete("/", users.deleteAll);
 
-    app.use('/api/recipes', router);
+    app.use('/api/users', router);
 };

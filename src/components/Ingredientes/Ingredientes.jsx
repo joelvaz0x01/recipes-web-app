@@ -2,8 +2,9 @@ import React, { Component, useEffect, useState } from "react";
 import './ingredientes.css';
 import SearchBox from './Receitas'
 import { withRouter } from '../../common/with-route';
+import MyDocument from "./pdf";
+import { Page, PDFViewer } from '@react-pdf/renderer';
 // import { main } from '../../../backend/server';
-// import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
 
 class Ingredientes extends Component {
     constructor(props) {
@@ -56,28 +57,21 @@ class Ingredientes extends Component {
                 </div>
                 <div className="receita_final pl5 pt5 ">
                     <h1>A sua receita está pronta ...</h1>
-                    <ul className="">
-                        <li>100g de carne</li>
-                        <li>100g de tomate</li>
-                        <li>100g de garlic</li>
-                        <li>100g de leite</li>
-                        <li>100g de cebola</li>
-                    </ul>
                 </div>
-                <div className="flex pt5">
+                <div className="">
                     {
                         !username
                             ? <div className="w-20 pa3">
                                 <h3 className="h3_d">Faça login para descarregar o PDF a receita.</h3>
                             </div>
                             : <>
-                                <div className="w-20 pa3">
-                                    <h3 className="h3_d">Faça download da sua receita em PDF.</h3>
+                                <div className="w-100">
+                                    <div className='pdf-div'>
+                                        <PDFViewer className='pdf-view'>
+                                            <MyDocument />
+                                        </PDFViewer>
+                                    </div>
                                 </div>
-                                <div className="w-10 pa3">
-                                    <button className="nav__item_button_receitas_d pa3">Download</button>
-                                </div>
-
                             </>
                     }
                 </div>

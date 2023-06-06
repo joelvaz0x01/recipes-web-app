@@ -1,8 +1,45 @@
 const db = require("../models");
-const User = db.user;
+const User = db.users;
 
-// Create and Save a new User
-exports.create = (req, res) => {
+// Login a User
+exports.login = (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+
+    User.findOne({ username: username })
+        .then(data => {
+            if (!data) {
+                return res.status(404).send({ message: "User Not found." });
+            }
+
+            var passwordIsValid = bcrypt.compareSync(
+                password,
+                data.password
+            );
+
+            if (!passwordIsValid) {
+                return res.status(401).send({
+                    accessToken: null,
+                    message: "Invalid Password!"
+                });
+            }
+
+            res.status(200).send({
+                id: data._id,
+                username: data.username,
+                email: data.email,
+                accessToken: null
+            });
+        }
+        )
+        .catch(err => {
+            res.status(500).send({ message: err.message });
+        }
+        );
+}
+
+// Register a User
+exports.register = (req, res) => {
     // Validate request
     if (!req.body.username || !req.body.email || !req.body.password) {
         res.status(400).send({ message: "Content can not be empty!" });
@@ -13,14 +50,21 @@ exports.create = (req, res) => {
     const user = new User({
         username: req.body.username,
         email: req.body.email,
-        password: bcrypt.hashSync(req.body.password, 8)
+        password: bcrypt.hashSync(req.body.password, 8),
+        isAdmin: false
     });
 
     // Save User in the database
     user
         .save(user)
         .then(data => {
-            res.send(data);
+            res.send({
+                id: data._id,
+                username: data.username,
+                email: data.email,
+                isAdmin: data.isAdmin,
+                accessToken: null
+            });
         }
         )
         .catch(err => {
@@ -76,9 +120,7 @@ exports.update = (req, res) => {
         }
         );
     }
-
     const id = req.params.id;
-
     User.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
         .then(data => {
             if (!data) {
@@ -101,7 +143,6 @@ exports.update = (req, res) => {
 // Delete a User with the specified id in the request
 exports.delete = (req, res) => {
     const id = req.params.id;
-
     User.findByIdAndRemove(id)
         .then(data => {
             if (!data) {
@@ -142,96 +183,6 @@ exports.deleteAll = (req, res) => {
                     err.message || "Some error occurred while removing all users."
             }
             );
-        }
-        );
-}
-
-// Find all published Users
-exports.findAllPublished = (req, res) => {
-    User.find({ published: true })
-        .then(data => {
-            res.send(data);
-        }
-        )
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occurred while retrieving users."
-            }
-            );
-        }
-        );
-}
-
-// Login a User
-exports.login = (req, res) => {
-    const username = req.body.username;
-    const password = req.body.password;
-
-    User.findOne({ username: username })
-        .then(data => {
-            if (!data) {
-                return res.status(404).send({ message: "User Not found." });
-            }
-
-            var passwordIsValid = bcrypt.compareSync(
-                password,
-                data.password
-            );
-
-            if (!passwordIsValid) {
-                return res.status(401).send({
-                    accessToken: null,
-                    message: "Invalid Password!"
-                });
-            }
-
-            res.status(200).send({
-                id: data._id,
-                username: data.username,
-                email: data.email,
-                accessToken: null
-            });
-        }
-        )
-        .catch(err => {
-            res.status(500).send({ message: err.message });
-        }
-        );
-}
-
-// Register a User
-exports.register = (req, res) => {
-    // Validate request
-    if (!req.body.username || !req.body.email || !req.body.password) {
-        res.status(400).send({ message: "Content can not be empty!" });
-        return;
-    }
-
-    // Create a User
-    const user = new User({
-        username: req.body.username,
-        email: req.body.email,
-        password: bcrypt.hashSync(req.body.password, 8)
-    });
-
-    // Save User in the database
-    user
-        .save(user)
-        .then(data => {
-            res.send({
-                id: data._id,
-                username: data.username,
-                email: data.email,
-                accessToken: null
-            });
-        }
-        )
-        .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occurred while creating the User."
-            });
         }
         );
 }

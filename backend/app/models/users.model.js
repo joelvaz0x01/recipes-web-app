@@ -4,12 +4,7 @@ module.exports = mongoose => {
             username: String,
             email: String,
             password: String,
-            roles: [
-                {
-                    type: mongoose.Schema.Types.ObjectId,
-                    ref: "Role"
-                }
-            ]
+            isAdmin: Boolean,
         },
         { timestamps: true }
     );

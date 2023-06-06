@@ -1,5 +1,5 @@
 const db = require("../models");
-const Recipe = db.recipe;
+const Recipe = db.recipes;
 
 // Create and Save a new Recipe
 exports.create = (req, res) => {
