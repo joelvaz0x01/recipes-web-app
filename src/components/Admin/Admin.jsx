@@ -39,8 +39,7 @@ class Profile extends Component {
         var data = {
             name: this.state.name,
             description: this.state.description,
-            instructions: this.state.instructions,
-            isPublished: this.state.isPublished
+            instructions: this.state.instructions
         };
 
         RecipesDataService.create(data)

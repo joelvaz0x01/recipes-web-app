@@ -4,7 +4,7 @@ const Recipe = db.recipes;
 // Create and Save a new Recipe
 exports.create = (req, res) => {
     // Validate request
-    if (!req.body.name || !req.body.description || !req.body.instructions || !req.body.published) {
+    if (!req.body.name || !req.body.description || !req.body.instructions) {
         res.status(400).send({ message: "Content can not be empty!" });
         return;
     }
@@ -13,8 +13,7 @@ exports.create = (req, res) => {
     const recipe = new Recipe({
         name: req.body.name,
         description: req.body.description,
-        instructions: req.body.instructions,
-        published: req.body.published
+        instructions: req.body.instructions
     });
 
     // Save Recipe in the database
@@ -274,6 +273,25 @@ exports.findAllByDescriptionPublished = (req, res) => {
                     err.message || "Some error occurred while retrieving recipes."
             }
             );
+        }
+        );
+}
+
+// Find a single Recipe with name
+exports.findOneByName = (req, res) => {
+    const name = req.params.id;
+
+    Recipe.findOne({ name: name })
+        .then(data => {
+            if (!data)
+                res.status(404).send({ message: "Not found Recipe with name " + name });
+            else res.send(data);
+        }
+        )
+        .catch(err => {
+            res
+                .status(500)
+                .send({ message: "Error retrieving Recipe with name=" + name });
         }
         );
 }
