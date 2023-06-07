@@ -1,25 +1,28 @@
-.receita_final{
+.receita_final {
     color: #DCCA87;
-    
+
 }
 
-.inicio{
+.inicio {
     margin-left: 2%;
 }
-.preto{
+
+.preto {
     color: black;
     border-radius: 20px;
     background-color: #c8c8c8;
 }
+
 /* .preto:hover{
     background-color: #DCCA87;
     color: black;
     border: 2px solid 
 } */
-li{
+li {
     color: #c8c8c8;
 }
-.nav__item_button_receitas{
+
+.nav__item_button_receitas {
 
     margin-right: 30%;
     background: #c8c8c8;
@@ -31,8 +34,9 @@ li{
     cursor: pointer;
     border-radius: 5px;
 }
-.nav__item_button_receitas_d{
-    margin-left:60px ;
+
+.nav__item_button_receitas_d {
+    margin-left: 60px;
     background: #c8c8c8;
     font-weight: 500;
     font-size: 18px;
@@ -42,22 +46,25 @@ li{
     cursor: pointer;
     border-radius: 5px;
 }
-.h3_d{
+
+.h3_d {
     margin-left: 5%;
 }
-.pdf-div{
+
+.pdf-div {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
-.pdf-view{
+
+.pdf-view {
     width: 80%;
     height: 80vh;
     border: 1px solid #ccc;
 }
 
-#cor{
+#cor {
     color: #c8c8c8;
     text-decoration: underline;
 }

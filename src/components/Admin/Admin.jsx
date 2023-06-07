@@ -88,7 +88,7 @@ class Profile extends Component {
                     <h1>Perfil de {username}</h1>
                     <div className="frente">
                         <h2 className="h22">Insira o nome da receita</h2>
-                        <input className="" type="text" onChange={this.onChangeName}  style={{ width: '30%', backgroundColor: '#c8c8c8' }}/>
+                        <input className="" type="text" onChange={this.onChangeName} style={{ width: '30%', backgroundColor: '#c8c8c8' }} />
                     </div>
                     <div className="frente">
                         <h2 className="h22">Descrição</h2>

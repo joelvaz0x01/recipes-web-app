@@ -33,18 +33,14 @@ class Ingredientes extends Component {
     }
 
     searchRecipes = (event) => {
-        this.setState({ data: [] });
-        var searchField = event.target.value;
-        const { data } = this.state;
-        RecipesDataService.get({ name: searchField })
+        var data = {
+            name: event.target.value
+        }
+
+        RecipesDataService.findByName(data)
             .then(response => {
-                for (let i = 0; i < response.data.length; i++) {
-                    console.log(response.data[i].includes(searchField));
-                    if (response.data[i].name.includes(searchField)) {
-                        console.log(response.data[i]);
-                        this.setState({ data: data.push(response.data[i]) });
-                    }
-                }
+                console.log(response);
+                this.setState({ data: response.data });
                 console.log(response.data);
             })
             .catch(e => {

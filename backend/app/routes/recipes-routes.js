@@ -13,7 +13,7 @@ module.exports = app => {
     router.get("/published", recipes.findAllPublished);
 
     // Retrieve a single Recipe with name
-    router.get("/:id", recipes.findOneByName);
+    router.post("/search", recipes.findByName);
 
     // Update a Recipe with id
     router.put("/:id", recipes.update);

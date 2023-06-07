@@ -34,7 +34,7 @@ a {
     text-transform: uppercase;
     font-weight: bold;
     font-size: 20px;
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .nav__menu {
@@ -70,7 +70,8 @@ a {
     cursor: pointer;
     border-radius: 5px;
 }
-.nav__item_button_sign{
+
+.nav__item_button_sign {
     padding: 0.5rem 1rem;
     background: #c8c8c8;
     font-weight: 500;

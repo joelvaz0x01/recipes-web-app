@@ -1,15 +1,16 @@
 body {
     background-color: #373737;
-    
+
 }
-p{
+
+p {
     color: #c8c8c8;
 }
 
 .knife {
     position: absolute;
     height: 530px;
-    
+
 }
 
 #tamanhodir {

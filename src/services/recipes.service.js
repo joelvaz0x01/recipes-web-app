@@ -25,8 +25,8 @@ class RecipesDataService {
         return http.delete(`/recipes`);
     }
 
-    findByTitle(title) {
-        return http.get(`/recipes?title=${title}`);
+    findByName(name) {
+        return http.post(`/recipes/search`, name);
     }
 }
 

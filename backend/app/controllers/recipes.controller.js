@@ -278,20 +278,20 @@ exports.findAllByDescriptionPublished = (req, res) => {
 }
 
 // Find a single Recipe with name
-exports.findOneByName = (req, res) => {
-    const name = req.params.id;
+exports.findByName = (req, res) => {
+    const name = req.body.name;
 
-    Recipe.findOne({ name: name })
+    Recipe.find({ name: { $regex: name, $options: "i" } })
         .then(data => {
-            if (!data)
-                res.status(404).send({ message: "Not found Recipe with name " + name });
-            else res.send(data);
+            res.send(data);
         }
         )
         .catch(err => {
-            res
-                .status(500)
-                .send({ message: "Error retrieving Recipe with name=" + name });
+            res.status(500).send({
+                message:
+                    err.message || "Some error occurred while retrieving recipes."
+            }
+            );
         }
         );
 }
