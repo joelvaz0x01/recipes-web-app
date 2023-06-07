@@ -79,7 +79,7 @@ class Ingredientes extends Component {
                         </>
                         : <div className="inicio">
                             <div>
-                                <h1 className="pl5">Pesquisa a tua receita!</h1>
+                                <h1 className="pl5">Pesquise a sua receita!</h1>
                             </div>
                             <div className="flex">
                                 <SearchBox
@@ -90,17 +90,17 @@ class Ingredientes extends Component {
                                 data.map((item, index) => (
                                     <div className="" key={item.id}>
                                         <h1>{item.name}</h1>
-                                        <h2>{item.description}</h2>
-                                        <p>{item.instructions}</p>
+                                        <p>{item.description}</p>
                                         {
                                             username
                                                 ? <>
                                                     <br />
-                                                    <input onClick={() => this.onChangeDownload(index)} type="submit" value="Descarregar PDF" className="nav__item_button_receitas pa3" />
+                                                    <input onClick={() => this.onChangeDownload(index)} type="submit" value="Descarregar PDF" de className="nav__item_button_receitas pa3" />
+                                                    <br />
                                                 </>
                                                 : <>
                                                     <br />
-                                                    <h3 className="h3_d">Faça <Link id="cor" to="/login">login</Link> para descarregar o PDF da receita.</h3>
+                                                    <h3 className="h3_d">Faça <Link id="cor" to="/login">login</Link> para descarregar a receita.</h3>
                                                     <br />
                                                 </>
                                         }

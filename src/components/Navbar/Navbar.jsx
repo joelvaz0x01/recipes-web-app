@@ -26,7 +26,7 @@ class Navbar extends Component {
                         {
                             isAdmin
                                 ? <>
-                                    <Link id="nav__item_button_nav" to="/admin">Olá {username}</Link>
+                                    <Link id="nav__item_button_nav" to="/admin">Painel de administração</Link>
                                 </>
                                 : <></>
                         }

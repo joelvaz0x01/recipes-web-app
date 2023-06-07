@@ -14,7 +14,7 @@ class Register extends Component {
             email: this.props.email,
             password: '',
             username: this.props.username,
-            isLoggedIn: this.props.isLoggedIn,
+            success: false,
         };
     }
 
@@ -39,13 +39,8 @@ class Register extends Component {
 
         UsersDataService.register(data)
             .then(response => {
-                this.setState({
-                    email: response.data.email,
-                    username: response.data.username,
-                    isLoggedIn: true
-                });
+                this.setState({ success: true });
                 console.log(response.data);
-                <Navigate to="/login" replace={true} />
             })
             .catch(e => {
                 console.log(e);
@@ -53,9 +48,9 @@ class Register extends Component {
     };
 
     render() {
-        const { email, password, username, isLoggedIn } = this.state;
-        if (isLoggedIn) {
-            return <Navigate to="/" replace={true} />
+        const { email, password, username, success } = this.state;
+        if (success) {
+            return <Navigate to="/login" replace={true} />
         } else {
             return (
                 <div className='background'>

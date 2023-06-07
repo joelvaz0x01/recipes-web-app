@@ -46,31 +46,46 @@ exports.register = (req, res) => {
         return;
     }
 
-    // Create a User
-    const user = new User({
-        username: req.body.username,
-        email: req.body.email,
-        password: bcrypt.hashSync(req.body.password, 10),
-        isAdmin: false
-    });
-
-    // Save User in the database
-    user
-        .save(user)
+    // Check if user already exists
+    User.findOne({ email: req.body.email })
         .then(data => {
-            res.send({
-                id: data._id,
-                username: data.username,
-                email: data.email,
-                isAdmin: data.isAdmin
-            });
+            if (data) {
+                return res.status(409).send({
+                    message: "User already exists!"
+                });
+            } else {
+                // Create a User
+                const user = new User({
+                    username: req.body.username,
+                    email: req.body.email,
+                    password: bcrypt.hashSync(req.body.password, 10),
+                    isAdmin: false
+                });
+
+                // Save User in the database
+                user
+                    .save(user)
+                    .then(data => {
+                        res.send({
+                            id: data._id,
+                            username: data.username,
+                            email: data.email,
+                            isAdmin: data.isAdmin
+                        });
+                    }
+                    )
+                    .catch(err => {
+                        res.status(500).send({
+                            message:
+                                err.message || "Some error occurred while creating the User."
+                        });
+                    }
+                    );
+            }
         }
         )
         .catch(err => {
-            res.status(500).send({
-                message:
-                    err.message || "Some error occurred while creating the User."
-            });
+            res.status(500).send({ message: err.message });
         }
         );
 }
