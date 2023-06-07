@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.5969e911.css",
+    "main.js": "/static/js/main.86f7af5a.js",
+    "static/js/787.3e22468a.chunk.js": "/static/js/787.3e22468a.chunk.js",
+    "static/media/chef.jpg": "/static/media/chef.ec0b586fd39d9cc8b94a.jpg",
+    "static/media/peixe.png": "/static/media/peixe.b6953e43fd9911127e65.png",
+    "static/media/knife.png": "/static/media/knife.008082a4d2cf77f217bf.png",
+    "index.html": "/index.html",
+    "main.5969e911.css.map": "/static/css/main.5969e911.css.map",
+    "main.86f7af5a.js.map": "/static/js/main.86f7af5a.js.map",
+    "787.3e22468a.chunk.js.map": "/static/js/787.3e22468a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5969e911.css",
+    "static/js/main.86f7af5a.js"
+  ]
+}

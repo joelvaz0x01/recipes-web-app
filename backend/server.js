@@ -5,7 +5,7 @@ const app = express();
 
 app.use(cors());
 
-// app.use(express.static('../build'));
+app.use(express.static('../build'));
 
 // parse requests of content-type - application/json
 app.use(express.json());

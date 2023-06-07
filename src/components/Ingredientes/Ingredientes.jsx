@@ -29,7 +29,6 @@ class Ingredientes extends Component {
 
     onSearchChange = (event) => {
         this.setState({ searchfield: event.target.value })
-        console.log(event.target.value)
     }
 
     searchRecipes = (event) => {
@@ -39,7 +38,6 @@ class Ingredientes extends Component {
 
         RecipesDataService.findByName(data)
             .then(response => {
-                console.log(response);
                 this.setState({ data: response.data });
                 console.log(response.data);
             })
