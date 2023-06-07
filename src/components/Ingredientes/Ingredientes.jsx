@@ -95,7 +95,7 @@ class Ingredientes extends Component {
                                             username
                                                 ? <>
                                                     <br />
-                                                    <input onClick={() => this.onChangeDownload(index)} type="submit" value="Descarregar PDF" de className="nav__item_button_receitas pa3" />
+                                                    <input onClick={() => this.onChangeDownload(index)} type="submit" value="Descarregar PDF" className="nav__item_button_receitas pa3" />
                                                     <br />
                                                 </>
                                                 : <>
