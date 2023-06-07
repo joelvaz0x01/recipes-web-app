@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import './ingredientes.css';
 import SearchBox from './SearchBox'
 import { withRouter } from '../../common/with-route';
-import { PDFViewer } from '@react-pdf/renderer';
 import RecipesDataService from "../../services/recipes.service";
 import BuildPDF from "./BuildPDF";
 
@@ -74,14 +73,11 @@ class Ingredientes extends Component {
                         ? <>
                             <div className="receita_final pl5 pt5 ">
                                 <h1>A sua receita está pronta ...</h1>
+                                <input type="submit" value="Voltar" className="nav__item_button_receitas pa3" onClick={() => this.setState({ download: false })} />
                             </div>
                             <div className="w-100">
                                 <div className='pdf-div'>
-                                    <PDFViewer className='pdf-view'>
-                                        <BuildPDF
-                                            data={data[recipeId]}
-                                        />
-                                    </PDFViewer>
+                                    <BuildPDF data={data[recipeId]} />
                                 </div>
                             </div>
                         </>
@@ -106,24 +102,18 @@ class Ingredientes extends Component {
                                                     <br />
                                                     <input onClick={() => this.onChangeDownload(index)} type="submit" value="Descarregar PDF" className="nav__item_button_receitas pa3" />
                                                 </>
-
                                                 : <>
                                                     <br />
-                                                    <h3 className="h3_d">Faça <Link id="cor" to="/login">login</Link> para descarregar o PDF a receita.</h3>
+                                                    <h3 className="h3_d">Faça <Link id="cor" to="/login">login</Link> para descarregar o PDF da receita.</h3>
                                                     <br />
                                                 </>
-
                                         }
-
                                     </div>
                                 ))
-
                             }
                         </div>
-
                 }
             </>
-
         )
     }
 }
