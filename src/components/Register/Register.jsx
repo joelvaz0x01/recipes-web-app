@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Navigate } from "react-router-dom";
-import peixe from '../../images/peixe.png'
+import { Navigate } from 'react-router-dom';
+import fish from '../../assets/images/fish.png';
 import './register.css'
-import UsersDataService from "../../services/users.service";
+import UsersDataService from '../../services/users.service';
 import { withRouter } from '../../common/with-route';
 
 class Register extends Component {
@@ -50,57 +50,57 @@ class Register extends Component {
     render() {
         const { email, password, username, success } = this.state;
         if (success) {
-            return <Navigate to="/login" replace={true} />
+            return <Navigate to='/login' replace={true} />
         } else {
             return (
                 <div className='background'>
-                    <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center" style={{ backgroundColor: '#DCCA87' }}>
-                        <main className="pa4 black-80">
-                            <div className="measure">
-                                <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-                                    <legend className="f1 fw6 ph0 mh0">Registo</legend>
-                                    <div className="mt3">
-                                        <label className="db fw6 lh-copy f9" htmlFor="name">Nome:</label>
+                    <article className='br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center' style={{ backgroundColor: '#DCCA87' }}>
+                        <main className='pa4 black-80'>
+                            <div className='measure'>
+                                <fieldset id='sign_up' className='ba b--transparent ph0 mh0'>
+                                    <legend className='f1 fw6 ph0 mh0'>Registo</legend>
+                                    <div className='mt3'>
+                                        <label className='db fw6 lh-copy f9' htmlFor='name'>Nome:</label>
                                         <input
-                                            className="pa2 input-reset ba bg-transparent w-100"
-                                            type="text"
-                                            name="name"
+                                            className='pa2 input-reset ba bg-transparent w-100'
+                                            type='text'
+                                            name='name'
                                             value={username}
-                                            id="name"
+                                            id='name'
                                             onChange={this.onChangeName}
                                         />
                                     </div>
-                                    <div className="mt3">
-                                        <label className="db fw6 lh-copy f9" htmlFor="email-address">Email:</label>
+                                    <div className='mt3'>
+                                        <label className='db fw6 lh-copy f9' htmlFor='email-address'>Email:</label>
                                         <input
-                                            className="pa2 input-reset ba bg-transparent w-100"
-                                            type="email"
-                                            name="email-address"
-                                            id="email-address"
+                                            className='pa2 input-reset ba bg-transparent w-100'
+                                            type='email'
+                                            name='email-address'
+                                            id='email-address'
                                             value={email}
                                             onChange={this.onChangeEmail}
                                             required
                                         />
                                     </div>
-                                    <div className="mv3">
-                                        <label className="db fw6 lh-copy f9" htmlFor="password">Password:</label>
+                                    <div className='mv3'>
+                                        <label className='db fw6 lh-copy f9' htmlFor='password'>Password:</label>
                                         <input
-                                            className="b pa2 input-reset ba bg-transparent  w-100"
-                                            type="password"
-                                            name="password"
-                                            id="password"
+                                            className='b pa2 input-reset ba bg-transparent w-100'
+                                            type='password'
+                                            name='password'
+                                            id='password'
                                             value={password}
                                             onChange={this.onChangePassword}
                                             required
                                         />
                                     </div>
                                 </fieldset>
-                                <div className="">
+                                <div className=''>
                                     <input
                                         onClick={() => this.registerUser()}
-                                        className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer fw1 dib"
-                                        type="submit"
-                                        value="Registar"
+                                        className='b ph3 pv2 input-reset ba b--black bg-transparent grow pointer fw1 dib'
+                                        type='submit'
+                                        value='Registar'
                                     />
                                 </div>
                             </div>
@@ -118,7 +118,7 @@ class Register extends Component {
                             <div className='retangulo-dois'></div>
                         </div>
                         <div id='tamanhodireita' className='tl pa3'>
-                            <img className='peixe' src={peixe} alt="peixe" style={{ alignSelf: 'center' }} />
+                            <img className='fish' src={fish} alt='fish' style={{ alignSelf: 'center' }} />
                         </div>
                     </div>
                 </div>

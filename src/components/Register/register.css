@@ -3,9 +3,6 @@
     left: 1200px;
     height: 490px;
     top: 440px;
-
-
-
 }
 
 .retangulo-um {
@@ -24,13 +21,11 @@
     left: 1175px;
     top: 670px;
     background: #DCCA87;
-
 }
 
 #tamanhodireita {
     width: 33%;
     padding-top: 2%;
-
 }
 
 #tamanhoesquerda {
@@ -38,7 +33,6 @@
     padding-top: 2%;
     font-family: var(--font-family);
     font-size: 18px;
-
 }
 
 #fonte {
@@ -46,5 +40,4 @@
     letter-spacing: 0.03em;
     color: #DCCA87;
     font-size: 35px;
-
 }
